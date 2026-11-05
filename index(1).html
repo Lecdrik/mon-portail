@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#243447">
+<title>Mon Portail</title>
+<style>
+:root{color-scheme:light;--navy:#243447;--bg:#f3f5f7;--card:#fff;--text:#17212b;--muted:#5d6b78}
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",sans-serif;background:var(--bg);color:var(--text)}
+header{background:var(--navy);color:#fff;padding:24px 18px 28px}
+header h1{margin:0 0 6px;font-size:27px}
+header p{margin:0;color:#dce5ee;font-size:14px}
+main{max-width:520px;margin:18px auto;padding:0 14px}
+.card{background:var(--card);border-radius:18px;padding:18px;margin:14px 0;box-shadow:0 3px 14px #15253612}
+h2{font-size:18px;margin:0 0 8px}
+p{line-height:1.45}
+.desc{color:var(--muted);font-size:14px;margin:0 0 14px}
+a.button,button{display:block;width:100%;padding:14px 16px;border:0;border-radius:12px;background:var(--navy);color:#fff;text-align:center;text-decoration:none;font-size:16px;font-weight:650;cursor:pointer}
+a.secondary{background:#e6edf3;color:#17212b;margin-top:9px}
+.note{font-size:13px;color:var(--muted)}
+.status{display:inline-block;border-radius:20px;background:#fff0d6;color:#76500b;padding:5px 9px;font-size:12px;font-weight:650;margin-bottom:10px}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:12px 20px 28px}
+</style>
+</head>
+<body>
+<header>
+  <h1>🏡 Mon Portail</h1>
+  <p>Accès rapide à la caméra et à la commande du portail</p>
+</header>
+<main>
+  <section class="card">
+    <span class="status">Ouverture dans le service Netvue</span>
+    <h2>📷 Caméra du portail</h2>
+    <p class="desc">Afficher la caméra en direct dans le navigateur. Connecte-toi avec ton compte Netvue si nécessaire.</p>
+    <a class="button" href="https://my.netvue.com/" target="_blank" rel="noopener">Voir la caméra Netvue</a>
+  </section>
+  <section class="card">
+    <span class="status">Commande via Smart Life</span>
+    <h2>🚪 Ouvrir / arrêter / refermer</h2>
+    <p class="desc">Ouvre Smart Life pour actionner le relais du portail. Vérifie l'image avant toute commande et assure-toi que le passage est libre.</p>
+    <button id="smartlife">Ouvrir Smart Life</button>
+    <p class="note" id="fallback" hidden>Si Smart Life ne s'ouvre pas, lance l'application depuis l'écran d'accueil de ton téléphone.</p>
+  </section>
+  <section class="card">
+    <h2>À savoir</h2>
+    <p class="note">Cette première version est un raccourci pratique : elle ne fusionne pas encore la vidéo et la commande dans un même écran. Le site Netvue peut empêcher l'intégration directe de son flux vidéo, et Smart Life ne fournit pas automatiquement un bouton de commande à une page Web.</p>
+  </section>
+</main>
+<footer>Mon Portail · Version de départ pour téléphone Samsung</footer>
+<script>
+document.getElementById('smartlife').addEventListener('click', function(){
+  document.getElementById('fallback').hidden = false;
+  // Try a Smart Life app deep link; if unsupported, the user can open the app normally.
+  window.location.href = 'smartlife://';
+});
+</script>
+</body>
+</html>
