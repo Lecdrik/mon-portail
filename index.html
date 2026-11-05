@@ -21,6 +21,8 @@ a.button,button{display:block;width:100%;padding:14px 16px;border:0;border-radiu
 a.secondary{background:#e6edf3;color:#17212b;margin-top:9px}
 .note{font-size:13px;color:var(--muted)}
 .status{display:inline-block;border-radius:20px;background:#fff0d6;color:#76500b;padding:5px 9px;font-size:12px;font-weight:650;margin-bottom:10px}
+.video{position:relative;width:100%;height:400px;border-radius:12px;overflow:hidden;background:#e6edf3}
+.video iframe{width:100%;height:100%;border:0}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:12px 20px 28px}
 </style>
 </head>
@@ -29,42 +31,33 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:12px 20px 28p
   <h1>🏡 Mon Portail</h1>
   <p>Accès rapide à la caméra et à la commande du portail</p>
 </header>
-    <section class="card">
-    <h2>📹 Caméra en direct</h2>
-    <div style="position:relative;width:100%;height:400px;">
-      <iframe
-        src="https://my.netvue.com/"
-        title="Caméra Netvue"
-        style="width:100%;height:100%;border:0;border-radius:12px;"
-        allow="camera; microphone; fullscreen"
-        allowfullscreen>
-      </iframe>
-    </div>
-    <p class="note">
-      Si la vidéo ne s'affiche pas,
-      <a href="https://my.netvue.com/" target="_blank" rel="noopener">
-        ouvrir Netvue séparément
-      </a>.
-    </p>
-  </section>
 <main>
+  <section class="card">
+    <h2>📹 Caméra en direct</h2>
+    <div class="video">
+      <iframe src="https://my.netvue.com/" title="Caméra Netvue" allow="fullscreen" allowfullscreen></iframe>
+    </div>
+    <p class="note">Si la vidéo ne s'affiche pas (fréquent, Netvue peut bloquer l'intégration), utilisez le bouton ci-dessous.</p>
+    <a class="button secondary" href="https://my.netvue.com/" target="_blank" rel="noopener">Ouvrir Netvue séparément</a>
+  </section>
+
   <section class="card">
     <span class="status">Commande via Smart Life</span>
     <h2>🚪 Ouvrir / arrêter / refermer</h2>
-    <p class="desc">Ouvre Smart Life pour actionner le relais du portail. Vérifie l'image avant toute commande et assure-toi que le passage est libre.</p>
+    <p class="desc">Ouvre Smart Life pour actionner le relais du portail. Vérifiez l'image avant toute commande et assurez-vous que le passage est libre.</p>
     <button id="smartlife">Ouvrir Smart Life</button>
-    <p class="note" id="fallback" hidden>Si Smart Life ne s'ouvre pas, lance l'application depuis l'écran d'accueil de ton téléphone.</p>
+    <p class="note" id="fallback" hidden>Si Smart Life ne s'ouvre pas, lancez l'application depuis l'écran d'accueil de votre téléphone.</p>
   </section>
+
   <section class="card">
     <h2>À savoir</h2>
-    <p class="note">Cette première version est un raccourci pratique : elle ne fusionne pas encore la vidéo et la commande dans un même écran. Le site Netvue peut empêcher l'intégration directe de son flux vidéo, et Smart Life ne fournit pas automatiquement un bouton de commande à une page Web.</p>
+    <p class="note">Cette version est un raccourci pratique : elle ne fusionne pas la vidéo et la commande dans un même écran.</p>
   </section>
 </main>
 <footer>Mon Portail · Version de départ pour téléphone Samsung</footer>
 <script>
 document.getElementById('smartlife').addEventListener('click', function(){
   document.getElementById('fallback').hidden = false;
-  // Try a Smart Life app deep link; if unsupported, the user can open the app normally.
   window.location.href = 'smartlife://';
 });
 </script>
