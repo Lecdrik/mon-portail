@@ -29,6 +29,24 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:12px 20px 28p
   <h1>🏡 Mon Portail</h1>
   <p>Accès rapide à la caméra et à la commande du portail</p>
 </header>
+    <section class="card">
+    <h2>📹 Caméra en direct</h2>
+    <div style="position:relative;width:100%;height:300px;">
+      <iframe
+        src="https://my.netvue.com/"
+        title="Caméra Netvue"
+        style="width:100%;height:100%;border:0;border-radius:12px;"
+        allow="camera; microphone; fullscreen"
+        allowfullscreen>
+      </iframe>
+    </div>
+    <p class="note">
+      Si la vidéo ne s'affiche pas,
+      <a href="https://my.netvue.com/" target="_blank" rel="noopener">
+        ouvrir Netvue séparément
+      </a>.
+    </p>
+  </section>
 <main>
   <section class="card">
     <span class="status">Ouverture dans le service Netvue</span>
